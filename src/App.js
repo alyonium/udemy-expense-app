@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import {ExpenseItem} from "./components/ExpenseItem";
+const expenses = [{
+    id: 1,
+    date: new Date(2021, 1, 5),
+    title: 'Book',
+    price:  100,
+},
+{
+    id: 2,
+    date: new Date(2022, 2, 14),
+    title: 'Pizza',
+    price:  550,
+},
+{
+    id: 3,
+    date: new Date(2021, 8, 20),
+    title: 'Flower',
+    price:  1000,
+}];
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export const App = () => {
+    return (
+        <div className="App">
+            {expenses.map((item) => (<ExpenseItem date={item.date.toISOString()} title={item.title} price={item.price}/>))}
+        </div>
+    )
 }
 
-export default App;
