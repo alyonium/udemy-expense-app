@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import styles from './ExpenseForm.module.css';
+import { getId } from '../helpers/getId';
 
-export const ExpenseForm = () => {
-  const [form, setForm] = useState({
-    title: undefined,
-    price: undefined,
-    date: undefined,
-  });
+export const ExpenseForm = ({ onSaveExpenseData }) => {
+  const defaultFormState = {
+    title: '',
+    price: '',
+    date: '',
+  };
+
+  const [form, setForm] = useState(defaultFormState);
 
   const updateTitle = (event) => {
     setForm((currentState) => ({
@@ -32,15 +35,20 @@ export const ExpenseForm = () => {
   const saveExpense = (event) => {
     event.preventDefault();
 
-    // const expenseData = {
-    //   title: form.title,
-    //   price: form.price,
-    //   date: new Date(form.date),
-    // };
+    const formattedExpenseData = {
+      title: form.title,
+      price: +form.price,
+      date: new Date(form.date),
+      id: getId(),
+    };
+
+    onSaveExpenseData(formattedExpenseData);
+
+    setForm(defaultFormState);
   };
 
   return (
-    <form action="">
+    <form onSubmit={saveExpense}>
       <div className={styles.newExpenseControls}>
         <div className={styles.newExpenseControl}>
           <label>Title</label>
@@ -72,7 +80,7 @@ export const ExpenseForm = () => {
         </div>
       </div>
       <div className={styles.newExpenseActions}>
-        <button type="submit" onSubmit={saveExpense}>Add expense</button>
+        <button type="submit">Add expense</button>
       </div>
     </form>
   );

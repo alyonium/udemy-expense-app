@@ -1,34 +1,35 @@
+import { useState } from 'react';
 import styles from './Expenses.module.css';
-import { ExpenseItem } from './components/ExpenseItem';
+import { ExpenseItem } from './components/ExpenseItem/ExpenseItem';
 import { Card } from '../Card/Card';
+import { ExpensesFilter } from './components/ExpensesFilter/ExpensesFilter';
 
-const expenses = [
-  {
-    id: 1,
-    date: new Date(2021, 1, 5),
-    title: 'Book',
-    price: 100,
-  },
-  {
-    id: 2,
-    date: new Date(2022, 12, 14),
-    title: 'Pizza',
-    price: 550,
-  },
-  {
-    id: 3,
-    date: new Date(2020, 8, 20),
-    title: 'Flower',
-    price: 1000,
-  },
-];
+export const Expenses = ({ expenses }) => {
+  const [currentYear, setCurrentYear] = useState('2022');
 
-export const Expenses = () => {
+  const filterChange = (selectedYear) => {
+    setCurrentYear(selectedYear);
+  };
+
+  const filteredExpenses = expenses
+    .filter((item) => {
+      return item.date.getFullYear().toString() === currentYear;
+    });
+
   return (
-    <Card className={styles.expenses}>
-      {expenses.map((item) => (
-        <ExpenseItem date={item.date} title={item.title} price={item.price} key={item.id} />
-      ))}
-    </Card>
+    <div>
+      <Card className={styles.expenses}>
+        <ExpensesFilter onFilterChange={filterChange} currentYear={currentYear} />
+        {
+          filteredExpenses.length === 0
+            ? (<p>Expenses not found ;(</p>)
+            : (
+              filteredExpenses.map((item) => (
+                <ExpenseItem date={item.date} title={item.title} price={item.price} key={item.id} />
+              )))
+        }
+      </Card>
+    </div>
+
   );
 };

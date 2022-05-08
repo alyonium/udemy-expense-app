@@ -1,6 +1,6 @@
 import styles from './ExpenseItem.module.css';
-import { ExpenseDate } from './ExpensesDate';
-import { Card } from '../../Card/Card';
+import { ExpenseDate } from '../ExpenseDate/ExpensesDate';
+import { Card } from '../../../Card/Card';
 
 export const ExpenseItem = ({ date, title, price }) => (
   <Card className={styles.expenseItem}>
