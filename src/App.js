@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import { Expenses } from './components/Expenses/Expenses';
-import { NewExpense } from './components/NewExpense/NewExpense';
+import { NewExpense } from './components/Expenses/components/NewExpense/NewExpense';
 
 const INITIAL_EXPENSES = [
   {

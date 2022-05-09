@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from './ExpenseForm.module.css';
-import { getId } from '../helpers/getId';
+import { getId } from '../../../helpers/getId';
 
-export const ExpenseForm = ({ onSaveExpenseData }) => {
+export const ExpenseForm = ({ onSaveExpenseData, closeAddBlock }) => {
   const defaultFormState = {
     title: '',
     price: '',
@@ -47,6 +47,11 @@ export const ExpenseForm = ({ onSaveExpenseData }) => {
     setForm(defaultFormState);
   };
 
+  const cancelAdding = () => {
+    setForm(defaultFormState);
+    closeAddBlock();
+  };
+
   return (
     <form onSubmit={saveExpense}>
       <div className={styles.newExpenseControls}>
@@ -80,6 +85,7 @@ export const ExpenseForm = ({ onSaveExpenseData }) => {
         </div>
       </div>
       <div className={styles.newExpenseActions}>
+        <button type="button" onClick={cancelAdding}>Cancel</button>
         <button type="submit">Add expense</button>
       </div>
     </form>
