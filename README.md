@@ -1,1 +1,1 @@
-small expenses counter app 💸
+https://alyonium.github.io/udemy-expense-app/ 💸
