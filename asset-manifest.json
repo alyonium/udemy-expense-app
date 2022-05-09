@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/udemy-expense-app/static/css/main.345b1a1c.css",
+    "main.js": "/udemy-expense-app/static/js/main.fcf7e4e5.js",
+    "static/js/787.7633472a.chunk.js": "/udemy-expense-app/static/js/787.7633472a.chunk.js",
+    "index.html": "/udemy-expense-app/index.html",
+    "main.345b1a1c.css.map": "/udemy-expense-app/static/css/main.345b1a1c.css.map",
+    "main.fcf7e4e5.js.map": "/udemy-expense-app/static/js/main.fcf7e4e5.js.map",
+    "787.7633472a.chunk.js.map": "/udemy-expense-app/static/js/787.7633472a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.345b1a1c.css",
+    "static/js/main.fcf7e4e5.js"
+  ]
+}
